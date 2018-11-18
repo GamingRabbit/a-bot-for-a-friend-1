@@ -3,6 +3,7 @@ from discord.ext.commands import Bot #not needed
 import discord
 from discord.ext import commands
 import random
+import os
 
 BOT_PREFIX=("cat!","msg!cat.")
 
