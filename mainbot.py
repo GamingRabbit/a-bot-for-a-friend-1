@@ -4,6 +4,8 @@ import discord
 from discord.ext import commands
 import random
 import os
+import asyncio
+import aiohttp
 
 BOT_PREFIX=("cat!","msg!cat.")
 
