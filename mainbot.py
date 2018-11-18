@@ -18,7 +18,9 @@ async def list_servers():
         for server in client.servers:
             print(server.name)
         await asyncio.sleep(600)
- 
+@client.command()
+async def say(*,message):
+         await client.say(message)
 
 
 
