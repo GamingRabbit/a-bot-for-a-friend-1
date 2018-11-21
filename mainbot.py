@@ -30,7 +30,10 @@ async def say(*,message):
 async def eightball():
     responses =["no","maybe""yes", "idk, ask again later", "Definitely", "nope", "yes", "of course!"]
     await client.say(random.choice(responses))
-
+@client.command()
+async def square(number):
+    squared_value = int(number) * int(number)
+    await client.say(str(number) + " squared is " + str(squared_value))
 @client.event
 async def on_member_join(member):
     await client.send_message(member, "
