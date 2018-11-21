@@ -26,6 +26,13 @@ async def say(*,message):
          await client.say(message)
 
 
+@client.command(name = "8ball")
+async def eightball():
+    responses =["no","maybe""yes", "idk, ask again later", "Definitely", "nope", "yes", "of course!"]
+    await client.say(random.choice(responses))
 
+@client.event
+async def on_member_join(member):
+    await client.send_message(member, "
 client.loop.create_task(list_servers())
 client.run(os.getenv("TOKEN"))
