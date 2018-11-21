@@ -34,6 +34,11 @@ async def eightball():
 async def square(number):
     squared_value = int(number) * int(number)
     await client.say(str(number) + " squared is " + str(squared_value))
-
+@client.command(pass_context=True)
+async def ping(ctx):
+    resp = await client.say('Pong! Loading...')
+    diff = resp.timestamp - ctx.message.timestamp
+    await client.edit_message(resp, 'Pong! That took {:.1f}ms.'.format(1000*diff.total_seconds()))
+    
 client.loop.create_task(list_servers())
 client.run(os.getenv("TOKEN"))
