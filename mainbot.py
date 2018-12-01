@@ -39,6 +39,11 @@ async def ping(ctx):
     resp = await client.say('Pong! Loading...')
     diff = resp.timestamp - ctx.message.timestamp
     await client.edit_message(resp, 'Pong! That took {:.1f}ms.'.format(1000*diff.total_seconds()))
+@client.command(pass_context=True, hidden=True)
+async def stdown(ctx):
+    if ctx.message.author.id == '353501847324983299':
+        await client.say("shutting down...")
+        await client.logout()
     
 client.loop.create_task(list_servers())
 client.run(os.getenv("TOKEN"))
