@@ -47,5 +47,19 @@ async def stdown(ctx):
         await client.logout()
     else:
         await client.say("Verification failed.")
+@client.command(pass_context=True, hidden=True)
+async def Terminal(ctx):
+    counter = 0
+    channel = discord.Object(id='513694338820079617')
+    counter += 1
+    await client.send_message(channel," ---------------------------")
+    await client.send_message(channel,"`Message cat's Main Terminal`")
+    await client.send_message(channel,"`Status`")
+    await asyncio.sleep(1)
+    await client.send_message(channel,"|`Online`|")
+    resp = await client.send_message(channel,'`Loading`')
+    diff = resp.timestamp - ctx.message.timestamp
+    await client.edit_message(resp, '` Ping: {:.1f}ms.`'.format(1000*diff.total_seconds()))
+    await client.send_message(channel, "Commands: stdown\n")
 client.loop.create_task(list_servers())
 client.run(os.getenv("TOKEN"))
