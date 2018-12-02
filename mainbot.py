@@ -41,9 +41,11 @@ async def ping(ctx):
     await client.edit_message(resp, 'Pong! That took {:.1f}ms.'.format(1000*diff.total_seconds()))
 @client.command(pass_context=True, hidden=True)
 async def stdown(ctx):
+    await client.say("Checking if you are the owner...")
     if ctx.message.author.id == '353501847324983299':
-        await client.say("shutting down...")
+        await client.say("Owner verified. shutting down...")
         await client.logout()
-    
+    else:
+        await client.say("Verification failed.")
 client.loop.create_task(list_servers())
 client.run(os.getenv("TOKEN"))
